@@ -76,11 +76,7 @@ function startQuiz() {
   var timeInterval = setInterval(function () {
     timeEl.textContent = timeLeft + " seconds remaining";
     timeLeft--;
-    if (timeLeft === 0) {
-      timerEl.textContent = "";
-      speedRead();
-      clearInterval(timeInterval);
-    }
+    
   }, 1000);
   showQuestions();
 }
@@ -107,11 +103,12 @@ function showQuestions() {
 
 function evaluateAnswer() {
     if (event.target = ("argentina")); 
-  // If they are right, ntohign happens
+    showQuestions();
+ // If they are right, ntohign happens
   // If they are wrong, lose 10 seconds
   // if event.target.id does not match("argentina"), then minus 10 seconds, and tell them wrong!
   // showquestion 2
-  showQuestions(2);
+  
 }
 
 // function countdown() {
