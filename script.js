@@ -106,7 +106,7 @@ function showQuestions() {
 }
 
 function evaluateAnswer() {
-    if (answer1 = textContent = "argentina"); 
+    if (event.target = ("argentina")); 
   // If they are right, ntohign happens
   // If they are wrong, lose 10 seconds
   // if event.target.id does not match("argentina"), then minus 10 seconds, and tell them wrong!
