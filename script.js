@@ -1,130 +1,88 @@
-// Timer jumps from 0 to 75 seconds
-// & Show the first question (call showQuestions)
-// Then user clicks on answer
-// Timer goes up or down based on whether or not right answer (if/else)
-// Repeat 4 more times
-// After last question, show all done page with score & stop timer
-// User will enter initials, submit form & save to local storage
-// Then show highscores
-// Aside: if time reaches 0, show out of time message
-// Defining ---|--- grabbing
-var repQuestions = [
+var questions = [
   {
     question: "Where are B/W Tegus origianlly from?",
-    answers:{
-    a: "Venezuelan",
-    b: "Argentina",
-    c: "Florida",
-    d: "Chile",
-    },
-    correctAnswer: "b"
+    answers: ["Venezuela", "Argentina", "Florida", "Chile"],
+    correctAnswer: "Argentina",
   },
   {
     question: "what should the Temp be in the hot side of enclosure?",
-    answer:{
-    a: "80 to 90 %",
-    b: "90 to 100%",
-    c: "95 to 105%",
-    d: "110-120",
-    },
-    CorrectAnswer: "d"
+    answers: ["80 to 90 %", "90 to 100%", "95 to 105%", "110-120"],
+    correctAnswer: "110-120",
   },
   {
     question: "What is a Tegu's lifespan?",
-    answer:{
-    a: "5 Years",
-    b: "10 Years",
-    c: "15 Years",
-    d: "20 Years",
-    },
-    correctAnswer: "d"
+    answers: ["5 Years", "10 Years", "15 Years", "20 Years"],
+    correctAnswer: "20 Years",
   },
   {
     question: "What are Tegu's average length?",
-    answer:{
-    a: "3 to 4 feet",
-    b: "4 to 5 feet",
-    c: "5 to 6 feet",
-    d: "6+ feet",
-    },
-    correctAnswer: "b"
+    answers: ["3 to 4 feet", "4 to 5 feet", "5 to 6 feet", "6+ feet"],
+    correctAnswer: "4 to 5 feet",
   },
   {
     question: "Tegu's diet consits of?",
-    answer:{
-    a: "raw meat and fruits",
-    b: "crickets and worms",
-    c: "vegtables",
-    d: "dog food",
-    },
-    correctAnswer: "a",
+    answers: [
+      "raw meat and fruits",
+      "crickets and worms",
+      "vegtables",
+      "dog food",
+    ],
+    correctAnswer: "raw meat and fruits",
   },
 ];
+
 // User will click on start button
 var startNow = document.querySelector("#startQuiz");
 startNow.addEventListener("click", startQuiz);
 startNow.setAttribute("style", "margin-left: 580px");
-
 var timeEl = document.querySelector(".time");
 var byeBye = document.querySelector(".jumbotron");
-var questionEl = document.querySelector(".question");
-answer1.style.visibility = "hidden";
-answer2.style.visibility = "hidden";
-answer3.style.visibility = "hidden";
-answer4.style.visibility = "hidden";
+var seeya = document.querySelector("#quizContainer");
+seeya.style.visibility = "hidden";
+
 
 function startQuiz() {
   startNow.style.visibility = "hidden";
   byeBye.style.visibility = "hidden";
-  answer1.style.visibility = "visible";
-  answer2.style.visibility = "visible";
-  answer3.style.visibility = "visible";
-  answer4.style.visibility = "visible";
-  answer1.setAttribute("style", "margin-left: 500px");
-
+  seeya.style.visibility = "visible";
   var timeLeft = 75;
   var timeInterval = setInterval(function () {
     timeEl.textContent = timeLeft + " seconds remaining";
     timeLeft--;
-    
   }, 1000);
-  showQuestions();
+}
+  
+var questionIndex = 0;
+  
+function renderQuestion() {
+  var question = questions[questionIndex];
+  var questionss = document.querySelector(".question");
+  var $answers = document.querySelector(".answers");
+  questionss.textContent = question.question;
+  for (var index = 0; index < question.answers.length; index++) {
+    var btn = document.createElement("button");
+    btn.textContent = question.answers[index];
+    btn.setAttribute("class", "btn btn-primary btn-success");
+    $answers.append(btn);
+    $answers.setAttribute("class", "text-center");
+  }
 }
 
-function showQuestions() {
-  var output = [];
-  repQuestions.forEach(
-    (currentQuestion, questionNumber) => {
-      var answers = [];
-      for (b in currentQuestion.answers){
-        answers.push()
-      }
-    }
-  )
-}
+
+
+
+
+renderQuestion();
 
 function evaluateAnswer() {
-    if (event.target = ("argentina")); 
-    showQuestions();
- // If they are right, ntohign happens
+  showQuestions();
+  // If they are right, ntohign happens
   // If they are wrong, lose 10 seconds
   // if event.target.id does not match("argentina"), then minus 10 seconds, and tell them wrong!
   // showquestion 2
-  
 }
 
 // function countdown() {
-//   var timeLeft = 90;
-//   var timeInterval = setInterval(function () {
-//     timerEl.textContent = timeLeft + " seconds remaining";
-//     timeLeft--;
-//     if (timeLeft === 0) {
-//       timerEl.textContent = "";
-//       speedRead();
-//       clearInterval(timeInterval);
-//     }
-//   }, 1000);
-// }
 
 //   var q1 = document.querySelector(".q1");
 //   var example = document.querySelector("#a1");
@@ -199,20 +157,26 @@ function evaluateAnswer() {
 // }
 // potato.addEventListener("click", clickExample);
 // Collapse
-// var question = document.querySelector(".question");
-//   var answer1 = document.querySelector("#answer1");
-//   var answer2 = document.querySelector("#answer2");
-//   var answer3 = document.querySelector("#answer3");
-//   var answer4 = document.querySelector("#answer4");
-//   // Display the question
-//   question.textContent = "Question 1: Where are B/W Tegus originally from?";
-//   // Display answers
-//   answer1.textContent = "venezuela";
-//   answer2.textContent = "argentina";
-//   answer3.textContent = "Florida";
-//   answer4.textContent = "Chile";
-//   // Add event listeners to the buttons
-//   answer1.addEventListener("click", evaluateAnswer);
-//   answer2.addEventListener("click", evaluateAnswer);
-//   answer3.addEventListener("click", evaluateAnswer);
-//   answer4.addEventListener("click", evaluateAnswer);
+
+// answer1.style.visibility = "hidden";
+// answer2.style.visibility = "hidden";
+// answer3.style.visibility = "hidden";
+// answer4.style.visibility = "hidden";
+
+// var repQuestions = document.querySelector(".question");
+//    var answer1 = document.querySelector("#answer1");
+//    var answer2 = document.querySelector("#answer2");
+//    var answer3 = document.querySelector("#answer3");
+//    var answer4 = document.querySelector("#answer4");
+// //   // Display the question
+//    repQuestions.textContent = "Question 1: Where are B/W Tegus originally from?";
+// //   // Display answers
+//    answer1.textContent = "venezuela";
+//    answer2.textContent = "argentina";
+//    answer3.textContent = "Florida";
+//    answer4.textContent = "Chile";
+// //   // Add event listeners to the buttons
+//    answer1.addEventListener("click", evaluateAnswer);
+//    answer2.addEventListener("click", evaluateAnswer);
+//    answer3.addEventListener("click", evaluateAnswer);
+//    answer4.addEventListener("click", evaluateAnswer);

@@ -6,11 +6,17 @@ color: darkgreen;
 h2{
     text-align: center;
     color: darkgreen;
+  font-weight: bolder;
 }
 
 h3{
     text-align: center;
     color: darkgreen;
 }
- 
+ p{
+     text-align: center;
+     color: darkgreen;
+     font-weight: bold;
+     
+ }
 
