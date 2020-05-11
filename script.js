@@ -14,7 +14,7 @@
 // User will click on start button
 var startNow = document.querySelector("#startQuiz");
  startNow.addEventListener("click", startQuiz);
- 
+ startNow.setAttribute("style", "margin-left: 635px")
 
 function startQuiz() {
     
@@ -43,7 +43,7 @@ function showQuestions() {
   answer4.addEventListener("click", evaluateAnswer);
 }
 function evaluateAnswer() {
-    if event.target = ("!argentina")localStorage
+    
   // If they are right, ntohign happens
   // If they are wrong, lose 10 seconds
   // if event.target.id does not match("argentina"), then minus 10 seconds, and tell them wrong!
