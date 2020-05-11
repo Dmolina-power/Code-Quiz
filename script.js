@@ -1,4 +1,3 @@
-
 // Timer jumps from 0 to 75 seconds
 // & Show the first question (call showQuestions)
 // Then user clicks on answer
@@ -10,14 +9,29 @@
 // Aside: if time reaches 0, show out of time message
 // Defining ---|--- grabbing
 
-
 // User will click on start button
 var startNow = document.querySelector("#startQuiz");
- startNow.addEventListener("click", startQuiz);
- startNow.setAttribute("style", "margin-left: 635px")
+startNow.addEventListener("click", startQuiz);
+startNow.setAttribute("style", "margin-left: 635px");
+
+var timeEl = document.querySelector(".time");
+var byeBye = document.querySelector(".jumbotron");
+
 
 function startQuiz() {
-    
+  startNow.style.visibility = "hidden";
+  byeBye.style.visibility = "hidden";
+  var timeLeft = 75;
+  var timeInterval = setInterval(function () {
+    timeEl.textContent = timeLeft + " seconds remaining";
+    timeLeft--;
+    if (timeLeft === 0) {
+      timerEl.textContent = "";
+      speedRead();
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+
   // Timer jumps from 0 to 75 seconds
   // & Show the first question (aka call showQuestions)
   showQuestions();
@@ -43,7 +57,6 @@ function showQuestions() {
   answer4.addEventListener("click", evaluateAnswer);
 }
 function evaluateAnswer() {
-    
   // If they are right, ntohign happens
   // If they are wrong, lose 10 seconds
   // if event.target.id does not match("argentina"), then minus 10 seconds, and tell them wrong!
@@ -51,21 +64,18 @@ function evaluateAnswer() {
   showQuestions();
 }
 
-
-
-function countdown() {
-  var timeLeft = 90;
-  var timeInterval = setInterval(function () {
-    timerEl.textContent = timeLeft + " seconds remaining";
-    timeLeft--;
-    if (timeLeft === 0) {
-      timerEl.textContent = "";
-      speedRead();
-      clearInterval(timeInterval);
-    }
-  }, 1000);
-}
-
+// function countdown() {
+//   var timeLeft = 90;
+//   var timeInterval = setInterval(function () {
+//     timerEl.textContent = timeLeft + " seconds remaining";
+//     timeLeft--;
+//     if (timeLeft === 0) {
+//       timerEl.textContent = "";
+//       speedRead();
+//       clearInterval(timeInterval);
+//     }
+//   }, 1000);
+// }
 
 //   var q1 = document.querySelector(".q1");
 //   var example = document.querySelector("#a1");
