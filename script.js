@@ -8,7 +8,7 @@
 // Then show highscores
 // Aside: if time reaches 0, show out of time message
 // Defining ---|--- grabbing
-var questions = [
+var repQuestions = [
   {
     question: "Where are B/W Tegus origianlly from?",
     answers:{
@@ -92,23 +92,15 @@ function startQuiz() {
 }
 
 function showQuestions() {
-  var question = document.querySelector(".question");
-  var answer1 = document.querySelector("#answer1");
-  var answer2 = document.querySelector("#answer2");
-  var answer3 = document.querySelector("#answer3");
-  var answer4 = document.querySelector("#answer4");
-  //   // Display the question
-  question.textContent = "Question 1: Where are B/W Tegus originally from?";
-  //   // Display answers
-  answer1.textContent = "venezuela";
-  answer2.textContent = "argentina";
-  answer3.textContent = "Florida";
-  answer4.textContent = "Chile";
-  //   // Add event listeners to the buttons
-  answer1.addEventListener("click", evaluateAnswer);
-  answer2.addEventListener("click", evaluateAnswer);
-  answer3.addEventListener("click", evaluateAnswer);
-  answer4.addEventListener("click", evaluateAnswer);
+  var output = [];
+  repQuestions.forEach(
+    (currentQuestion, questionNumber) => {
+      var answers = [];
+      for (b in currentQuestion.answers){
+        answers.push()
+      }
+    }
+  )
 }
 
 function evaluateAnswer() {
