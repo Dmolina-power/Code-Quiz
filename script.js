@@ -1,3 +1,4 @@
+var questionIndex = 0;
 var questions = [
   {
     question: "Where are B/W Tegus origianlly from?",
@@ -38,53 +39,87 @@ startNow.setAttribute("style", "margin-left: 580px");
 var timeEl = document.querySelector(".time");
 var byeBye = document.querySelector(".jumbotron");
 var seeya = document.querySelector("#quizContainer");
-seeya.style.visibility = "hidden";
+// seeya.style.visibility = "hidden";
 
 
 function startQuiz() {
   startNow.style.visibility = "hidden";
   byeBye.style.visibility = "hidden";
-  seeya.style.visibility = "visible";
+  // seeya.style.visibility = "visible";
   var timeLeft = 75;
   var timeInterval = setInterval(function () {
     timeEl.textContent = timeLeft + " seconds remaining";
     timeLeft--;
+    if (timeLeft === 0) {
+      clearInterval(timerInterval)
+  }
   }, 1000);
+
+  showQuestions()
 }
+
+
   
-var questionIndex = 0;
-  
-function renderQuestion() {
+function showQuestions() {
+ 
+
   var question = questions[questionIndex];
-  var questionss = document.querySelector(".question");
-  var $answers = document.querySelector(".answers");
-  questionss.textContent = question.question;
-  for (var index = 0; index < question.answers.length; index++) {
+  var questions = document.querySelector("#question");
+  var $answers = document.querySelector("#answers");
+  questions.textContent = question.question;
+  $answers.innerHTML = "";
+  for (var i = 0; i < questions.answers.length; i++) {
     var btn = document.createElement("button");
-    btn.textContent = question.answers[index];
-    btn.setAttribute("class", "btn btn-primary btn-success");
-    $answers.append(btn);
+    btn.textContent = questions.answers[i];
+    btn.setAttribute("class", "btn btn-primary btn-success ml-3");
     $answers.setAttribute("class", "text-center");
+    $answers.append(btn);
+    
   }
 }
 
+document.addEventListener("click", function (e) {
+  var userAnswer = e.target.textContent;
+  if (!e.target.matches("button")) return
+
+
+  if (userAnswer === questions[questionIndex].correctAnswer) {
+      
+  } else {
+     
+  }
+
+  questionIndex++;
+  if (questionIndex === questions.length) {
+      endGame();
+
+  } else {
+
+      showQuestions();
+  }
+});
 
 
 
+function endGame() {
+  document.getElementById("end").submit();
 
-renderQuestion();
 
-function evaluateAnswer() {
-  showQuestions();
-  // If they are right, ntohign happens
-  // If they are wrong, lose 10 seconds
-  // if event.target.id does not match("argentina"), then minus 10 seconds, and tell them wrong!
-  // showquestion 2
 }
 
-// function countdown() {
+  
+  
 
-//   var q1 = document.querySelector(".q1");
+ 
+  
+
+
+
+
+
+
+
+
 //   var example = document.querySelector("#a1");
 //   document.getElementById("a1");
 //   q1.textContent = "Question#2";
