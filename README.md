@@ -1,1 +1,2 @@
-# Code-Quiz
+If your a big fan of reptiles and want to know more of the Argentine Black and White Tegu this quiz will see if you will be able to take the challenge in bringing one home into your home!
+If you get the wrong answer 10 seconds will be detucted from the timer. 

@@ -40,19 +40,19 @@ var timeEl = document.querySelector(".time");
 var byeBye = document.querySelector(".jumbotron");
 var seeya = document.querySelector("#quizContainer");
 // seeya.style.visibility = "hidden";
-
+var timeLeft = 75;
+var timerInterval;
 
 function startQuiz() {
   startNow.style.visibility = "hidden";
   byeBye.style.visibility = "hidden";
   // seeya.style.visibility = "visible";
-  var timeLeft = 75;
-  var timeInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     timeEl.textContent = timeLeft + " seconds remaining";
     timeLeft--;
     if (timeLeft === 0) {
       clearInterval(timerInterval)
-  }
+    }
   }, 1000);
 
   showQuestions()
@@ -62,15 +62,14 @@ function startQuiz() {
   
 function showQuestions() {
  
-
   var question = questions[questionIndex];
-  var questions = document.querySelector("#question");
+  var title = document.querySelector("#question");
   var $answers = document.querySelector("#answers");
-  questions.textContent = question.question;
+  title.textContent = question.question;
   $answers.innerHTML = "";
-  for (var i = 0; i < questions.answers.length; i++) {
+  for (var i = 0; i < questions[questionIndex].answers.length; i++) {
     var btn = document.createElement("button");
-    btn.textContent = questions.answers[i];
+    btn.textContent = questions[questionIndex].answers[i];
     btn.setAttribute("class", "btn btn-primary btn-success ml-3");
     $answers.setAttribute("class", "text-center");
     $answers.append(btn);
@@ -82,11 +81,10 @@ document.addEventListener("click", function (e) {
   var userAnswer = e.target.textContent;
   if (!e.target.matches("button")) return
 
-
   if (userAnswer === questions[questionIndex].correctAnswer) {
       
   } else {
-     
+     // Subtract 10 seconds off the clock
   }
 
   questionIndex++;
@@ -102,17 +100,23 @@ document.addEventListener("click", function (e) {
 
 
 function endGame() {
-  document.getElementById("end").submit();
+  // Hide questions
+  document.querySelector("#question-container").style.display = "none";
+  // Show all done
+  document.querySelector(".allDone").style.display = "block";
+  // Make a form for initials
+    // Save button to save to local storage
+    document.querySelector(".submitMe").addEventListener("click", function(event){
+      event.preventDefault();
 
-
+      var initials = document.querySelector("#initials").value;
+      document.querySelector("#initials").value = "";
+      // Save to local storage
+      //localStorage.setItem(initials, 20)
+    })
+  // Stop timer
+  clearInterval(timerInterval);
 }
-
-  
-  
-
- 
-  
-
 
 
 
